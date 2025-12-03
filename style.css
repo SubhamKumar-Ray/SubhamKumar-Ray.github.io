@@ -1,0 +1,343 @@
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', Arial, sans-serif; }
+body { line-height:1.6; background:#f5f5f5; }
+
+/* Header */
+header { background: linear-gradient(90deg,#4facfe,#00f2fe); color:white; padding:20px 0; }
+header h1 { text-align:center; margin-bottom:10px; font-size:2rem; }
+nav ul { display:flex; justify-content:center; list-style:none; gap:15px; flex-wrap:wrap; }
+nav ul li a { color:white; text-decoration:none; font-weight:bold; padding:8px 12px; border-radius:5px; transition:0.3s; }
+nav ul li a:hover, nav ul li a.active { background: rgba(255,255,255,0.3); }
+
+/* Hero Section */
+.hero { background: url('images/hero-bg.jpg') no-repeat center center/cover; color:white; padding:100px 20px; text-align:center; }
+.hero h2 { font-size:2.5rem; margin-bottom:15px; }
+.hero p { font-size:1.2rem; margin-bottom:20px; }
+.hero .btn { display:inline-block; padding:15px 30px; background:#ffc107; color:black; font-weight:bold; border-radius:10px; text-decoration:none; transition:0.3s; }
+.hero .btn:hover { background:#e0a800; }
+
+/* Admission Notice */
+.admission-notice { background:#ffefc4; padding:40px 20px; text-align:center; border-radius:15px; margin:40px auto; max-width:900px; }
+.admission-notice h2 { color:#d35400; margin-bottom:15px; }
+.admission-notice .btn { background:#28a745; color:white; }
+.admission-notice .btn:hover { background:#218838; }
+
+/* Sections */
+section { padding:60px 20px; }
+section h2 { text-align:center; margin-bottom:40px; color:#333; font-size:2rem; }
+
+/* Grid Layouts */
+.feature-grid, .course-grid, .placement-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+.feature-card, .course-card, .student-card { padding:20px; text-align:center; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.1); transition:0.3s; }
+.feature-card:hover, .course-card:hover, .student-card:hover { transform:translateY(-8px); box-shadow:0 10px 20px rgba(0,0,0,0.2); }
+
+/* Student Images */
+.student-card img { width:100%; height:400px; object-fit:cover; border-radius:10px; margin-bottom:10px; }
+
+/* Forms */
+form { max-width:600px; margin:auto; display:flex; flex-direction:column; gap:15px; background:white; padding:20px; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,0.1); }
+form input, form select, form textarea { padding:12px; border-radius:8px; border:1px solid #ccc; width:100%; font-size:1rem; }
+form button { padding:15px; background:#28a745; color:white; border:none; cursor:pointer; font-weight:bold; border-radius:10px; transition:0.3s; font-size:1rem; }
+form button:hover { background:#218838; }
+
+/* Footer */
+footer { background:#333; color:white; text-align:center; padding:20px 0; font-size:0.9rem; }
+
+/*footer {
+  background: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 40px 20px 20px;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 30px;
+  margin-bottom: 25px;
+}
+
+.footer-section {
+  flex: 1 1 250px;
+  text-align: left;
+}
+
+.footer-section h3 {
+  margin-bottom: 15px;
+  color: #e67e22;
+  font-size: 1.2rem;
+}
+
+.footer-section p,
+.footer-section a {
+  color: #ddd;
+  font-size: 0.95rem;
+  text-decoration: none;
+  line-height: 1.8;
+}
+
+.footer-section a:hover {
+  color: #fff;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.8rem;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: #e67e22;
+}
+
+.map-container iframe {
+  border: 0;
+  border-radius: 10px;
+  width: 100%;
+  height: 200px;
+}
+
+footer p {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-section {
+    text-align: left;
+  }
+}*/
+
+
+/* Responsive Text */
+@media(max-width:768px){
+    .hero h2 { font-size:2rem; }
+    .hero p { font-size:1rem; }
+}
+
+/* ===== Header Styling ===== */
+header {
+  background: linear-gradient(90deg, #0b3d91, #1e5aa8);
+  color: white;
+  padding: 15px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo, .sir-photo {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background-color: #ff7f50;
+}
+
+/* ===== Dropdown ===== */
+.dropdown-menu {
+  display: none; /* hidden by default */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #1e5aa8;
+  list-style: none;
+  border-radius: 8px;
+  padding: 8px 0;
+  min-width: 160px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 15px;
+  color: white;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.dropdown-menu li a:hover {
+  background: #ff7f50;
+}
+
+/* Dropdown visible class */
+.dropdown-menu.show {
+  display: block;
+}
+
+
+/* ===== Extra Responsive Fix ===== */
+@media(max-width:1024px){
+  header .container{
+    flex-wrap:wrap;
+    justify-content:center;
+    text-align:center;
+  }
+  nav ul{
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+}
+
+/* Tablets */
+@media(max-width:768px){
+
+  .logo-title{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .logo-title img{
+    height:70px;
+  }
+
+  .logo-title .sir-photo{
+    height:60px;
+    width:60px;
+  }
+
+  header h1{
+    font-size:1.4rem;
+    white-space:normal;
+  }
+
+  nav ul{
+    gap:10px;
+  }
+
+  .hero::before{
+    height:250px !important;
+  }
+
+  .hero-content{
+    width:95%;
+    margin-top:-60px;
+  }
+
+  .hero h2{
+    font-size:2.2rem;
+  }
+}
+
+/* Mobile Phones */
+@media(max-width:480px){
+
+  header .container{
+    gap:5px;
+  }
+
+  .logo-title img{
+    height:55px;
+  }
+
+  .logo-title .sir-photo{
+    height:50px;
+    width:50px;
+  }
+
+  header h1{
+    font-size:1.1rem;
+  }
+
+  nav ul{
+    gap:5px;
+  }
+
+  nav ul li a{
+    padding:6px 10px;
+    font-size:0.85rem;
+  }
+
+  .hero::before{
+    height:180px !important;
+  }
+
+  .hero h2{
+    font-size:1.5rem !important;
+  }
+
+  .hero p{
+    font-size:0.9rem;
+  }
+
+  .btn-primary{
+    padding:8px 20px;
+    font-size:0.9rem;
+  }
+
+  .feature-grid{
+    grid-template-columns:1fr;
+  }
+
+  .footer-container{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .social-icons img{
+    width:40px;
+    height:40px;
+  }
+}

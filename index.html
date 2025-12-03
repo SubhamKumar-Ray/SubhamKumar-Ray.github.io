@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Talent Hunt Software Solutions | Home</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      font-family:'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+      color:#333;
+      line-height:1.6;
+      scroll-behavior:smooth;
+    }
+
+    /* ===== Header ===== */
+    header {
+      background: linear-gradient(#FF8C00);
+      color:white;
+      padding:10px 0;
+      box-shadow:0 4px 10px rgba(0,0,0,0.2);
+      position:sticky;
+      top:0;
+      z-index:1000;
+      transition:0.3s;
+    }
+    header:hover {
+      background: linear-gradient(#FF8C00);
+    }
+
+    header .container {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      width:95%;
+      margin:auto;
+      flex-wrap:nowrap;
+      gap:15px;
+    }
+
+    /* ===== Logo + Title + Sir Photo ===== */
+    .logo-title {
+      display:flex;
+      align-items:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .logo-title img {
+      height:80px;
+      width:auto;
+      border-radius:10px;
+      object-fit:cover;
+      border:2px solid #ff7f50;
+    }
+
+    .logo-title .sir-photo {
+      height:70px;
+      width:70px;
+      border-radius:50%;
+      object-fit:cover;
+      border:2px solid white;
+    }
+
+    header h1 {
+      font-size:1.6rem;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    /* ===== Navigation ===== */
+    nav ul {
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap:15px;
+    }
+    nav ul li {position:relative;}
+    nav ul li a {
+      text-decoration:none;
+      color:white;
+      font-size:1rem;
+      padding:8px 14px;
+      border-radius:5px;
+      transition:0.3s;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      background:#ff7f50;
+    }
+
+    /* ===== Dropdown ===== */
+    .dropdown-menu {
+      display:none;
+      position:absolute;
+      top:100%;
+      left:0;
+      background:#1e5aa8;
+      border-radius:8px;
+      padding:8px 0;
+      min-width:160px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.2);
+      list-style:none;
+      z-index:100;
+    }
+    .dropdown-menu li a {
+      display:block;
+      padding:10px 15px;
+      color:white;
+      font-size:0.95rem;
+      transition:0.3s;
+    }
+    .dropdown-menu li a:hover {
+      background:#ff7f50;
+    }
+    .dropdown-menu.show {display:block;}
+
+    /* ===== Hero Section ===== */
+    .hero {
+	
+      position: relative;
+      text-align: center;
+      color: #0f3d64;
+    }
+
+    .hero::before {
+  content:"";
+  display:block;
+  width:100%;
+  padding-top: 40%; 
+  background:url("images/header-banner.png") no-repeat center center;
+  background-size:contain;  /* पूरा image दिखेगा */
+  background-color:#ffffff; /* खाली जगह दिखाई न दे */
+}
+
+
+    .hero-content {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 25px 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      margin: -40px auto 0 auto;
+      width: 90%;
+      max-width: 700px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h2 {
+      font-size: 2.8rem;
+      background: linear-gradient(90deg, #ff7f50, #ffb347);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      color: #333;
+      margin: auto;
+      margin-bottom: 25px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(45deg, #ff7f50, #ffb347);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(45deg, #ff6347, #ff9e3b);
+      transform: translateY(-3px);
+    }
+
+    /* ===== About ===== */
+    .about {
+      background:#fff;
+      padding:60px 20px;
+      text-align:center;
+	  margin-top: 60px;
+    }
+    .about h2 {color:#0f3d64; font-size:2rem; margin-bottom:20px;}
+    .about p {color:#555; max-width:800px; margin:auto;}
+
+    /* ===== Features ===== */
+    .features {
+      padding:60px 20px;
+      background:#e8f0f8;
+      text-align:center;
+    }
+    .features h2 {color:#0f3d64; margin-bottom:40px;}
+    .feature-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:30px;
+    }
+    .feature-card {
+      background:#fff;
+      padding:30px;
+      border-radius:12px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      transition:0.3s;
+    }
+    .feature-card:hover {
+      transform:translateY(-5px);
+      background:linear-gradient(145deg, #fffaf5, #fff3e8);
+    }
+    .feature-card h3 {color:#0f3d64; margin-bottom:10px;}
+    .feature-card p {color:#555;}
+
+    /* ===== Footer ===== */
+    footer {
+      background:#228B22;
+      color:white;
+      padding:40px 20px;
+      text-align:center;
+    }
+    .footer-container {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-around;
+      gap:30px;
+      margin-bottom:25px;
+    }
+    .footer-section {flex:1 1 250px;}
+    .footer-section h3 {color:#e67e22; margin-bottom:10px;}
+    .footer-section p, .footer-section a {
+      color:#ddd;
+      text-decoration:none;
+      font-size:0.95rem;
+    }
+    .social-icons {
+      display:flex;
+      justify-content:center;
+      gap:15px;
+      margin-top:10px;
+    }
+    .social-icons img {
+      width:45px;
+      height:45px;
+      border-radius:10px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+    .social-icons img:hover {transform:scale(1.2);}
+
+    .map-container iframe {
+      width:100%;
+      height:200px;
+      border-radius:10px;
+      border:0;
+    }
+
+    /* ===== Overlay Banner ===== */
+    #imageOverlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    #imageOverlay .overlay-content {position: relative;}
+    #imageOverlay img {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(255,255,255,0.4);
+    }
+    #imageOverlay button {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    #imageOverlay button:hover {
+      background: darkred;
+    }
+
+    /* ===== Responsive ===== */
+    @media(max-width:900px){
+      header .container {
+        flex-direction:column;
+        text-align:center;
+      }
+      .logo-title {
+        justify-content:center;
+        margin-bottom:10px;
+      }
+      nav ul {
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+      .hero::before {height:250px;}
+      .hero h2 {font-size:2rem;}
+      .hero p {font-size:1rem;}
+    }
+    @media(max-width:480px){
+      .hero::before {height:200px;}
+      .hero h2 {font-size:1.6rem;}
+      .btn-primary {padding:10px 25px;font-size:0.95rem;}
+    }
+	@media(max-width:600px){
+  .hero::before{
+    padding-top: 55%; /* Mobile par banner thoda ऊँचा दिखेगा */
+  }
+}
+@media(max-width:600px){
+  .hero::before{
+    padding-top: 60%;  /* मोबाइल के लिए height बढ़ाई */
+    background-size:contain; 
+  }
+}
+  </style>
+</head>
+
+<body>
+  <!-- ===== Image Overlay Popup ===== -->
+  <div id="imageOverlay">
+    <div class="overlay-content">
+      <img src="images/main-banner.jpg" alt="Main Banner">
+      <button id="closeOverlay">×</button>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="logo-title">
+        <img src="images/logo.jpg" alt="Logo">
+        <h1>Talent Hunt Software Solutions</h1>
+        <img src="images/sir-photo.jpg" alt="Sir" class="sir-photo">
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+		  <li><a href="courses.html">Courses</a></li>
+          <li><a href="placements.html">Placements</a></li>
+          <li><a href="admission.html">Admission</a></li>
+          <li><a href="contact.html">Contact</a></li>
+
+          <li class="dropdown">
+            <a href="#" class="dropbtn" onclick="toggleDropdown(event)">Feedback ▼</a>
+            <ul class="dropdown-menu">
+              <li><a href="https://forms.gle/ppa5A4qrNmzAkS556" target="_blank">Teacher</a></li>
+              <li><a href="https://forms.gle/DTwAtUrxLkZnxg5GA" target="_blank">Student</a></li>
+              <li><a href="https://forms.gle/parentFormLink" target="_blank">Parent</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Learn, Grow & Get Placed</h2>
+      <p>Providing top-notch training to help students achieve success in their IT careers.</p>
+      <a href="admission.html" class="btn-primary">Enroll Now</a>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2>About Talent Hunt Software Solutions</h2>
+    <p>We are dedicated to nurturing future IT professionals by providing hands-on training, expert mentorship, and real-world project exposure. Our goal is to empower students with the skills and confidence to excel in companies like Infosys, TCS, Wipro, and more.</p>
+  </section>
+
+  <section class="features">
+    <h2>Why Choose Us?</h2>
+    <div class="feature-grid">
+      <div class="feature-card"><h3>Expert Trainers</h3><p>Learn from professionals with real-world experience.</p></div>
+      <div class="feature-card"><h3>100% Placement Support</h3><p>Get placed in top MNCs and startups.</p></div>
+      <div class="feature-card"><h3>Hands-on Projects</h3><p>Gain practical skills through real projects.</p></div>
+      <div class="feature-card"><h3>Personal Guidance</h3><p>Receive one-on-one mentorship and career help.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>📍 Contact Us</h3>
+        <p><strong>Address:</strong> Near Dhobia Talab, Hazaribagh, Jharkhand</p>
+        <p><strong>Phone:</strong> <a href="tel:+917004700161">+91 7004700161</a></p>
+        <p><strong>Email:</strong> <a href="mailto:randhir10.mca@gmail.com">randhir10.mca@gmail.com</a></p>
+      </div>
+
+      <div class="footer-section">
+        <h3>🌐 Follow Us</h3>
+        <div class="social-icons">
+          <img src="images/facebook.png" alt="Facebook" onclick="window.open('https://www.facebook.com/groups/722573425203339','_blank')">
+          <img src="images/whatsapp.jpeg" alt="WhatsApp" onclick="window.open('https://wa.me/917004700161','_blank')">
+          <img src="images/logo.jpg" alt="Logo">
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>🗺 Location</h3>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.123456!2d85.3759284!3d23.9899259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f49d5a4777aca7%3A0x26f8c59736e7fba7!2sKiran%20Lodge%2C%20Ompuri!5e0!3m2!1sen!2sin!4v1690000000000" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+    <p>&copy; 2025 Talent Hunt Software Solutions. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+  function toggleDropdown(event) {
+    event.preventDefault();
+    const menu = event.currentTarget.nextElementSibling;
+    menu.classList.toggle('show');
+  }
+  window.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown')) {
+      document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.remove('show'));
+    }
+  });
+
+  document.getElementById("closeOverlay").onclick = function() {
+    document.getElementById("imageOverlay").style.display = "none";
+  };
+  </script>
+</body>
+</html>

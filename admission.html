@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admission Enquiry | Talent Hunt Software Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      font-family:'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+      color:#333;
+      line-height:1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* ===== Header ===== */
+    header {
+      background:linear-gradient(90deg, #0b3d91, #1e5aa8);
+      color:white;
+      padding:15px 0;
+      box-shadow:0 2px 10px rgba(0,0,0,0.3);
+      position:sticky;
+      top:0;
+      z-index:1000;
+      transition:0.3s;
+    }
+    header:hover {background: linear-gradient(90deg, #092d6a, #174f8a);}    
+    header .container {
+      width:87%;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .logo-title {
+      display:flex;
+      align-items:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .logo-title img {
+      height:80px;
+      width:auto;
+      border-radius:10px;
+      object-fit:cover;
+      border:2px solid #ff7f50;
+    }
+
+    .logo-title .sir-photo {
+      height:70px;
+      width:70px;
+      border-radius:50%;
+      object-fit:cover;
+      border:2px solid white;
+    }
+    header h1 {
+      font-size:1.6rem;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      transition:0.3s;
+    }
+
+    nav ul {
+      list-style:none;
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:10px;
+    }
+    nav ul li a {
+      text-decoration:none;
+      color:white;
+      font-size:1rem;
+      padding:8px 14px;
+      border-radius:5px;
+      transition:0.3s;
+      position:relative;
+    }
+    nav ul li a.active, nav ul li a:hover {
+      background:#ff7f50;
+      transform:translateY(-2px);
+      box-shadow:0 3px 8px rgba(0,0,0,0.3);
+    }
+
+    /* ===== Glass Form Card ===== */
+    .form-card {
+      max-width:920px;
+      margin:50px auto;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      padding:35px 30px;
+      border-radius:18px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+      position:relative;
+      transition:0.3s;
+    }
+    .form-card:hover {transform: translateY(-3px);}    
+
+    .form-card h2 {
+      text-align:center;
+      font-size:2rem;
+      color:#2c3e50;
+      margin-bottom:20px;
+      font-weight:600;
+    }
+
+    /* ===== Form Layout (two columns) ===== */
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px 22px;
+    }
+    .full{grid-column:1 / -1}
+
+    /* ===== Floating Labels ===== */
+    .form-group {
+      position:relative;
+      margin-bottom:6px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width:100%;
+      padding:14px 16px;
+      border-radius:12px;
+      border:1px solid #d0d7de;
+      font-size:1rem;
+      outline:none;
+      background:transparent;
+      transition:0.25s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color:#ff7f50;
+      box-shadow:0 6px 18px rgba(255,127,80,0.12);
+    }
+    .form-group label {
+      position:absolute;
+      top:50%;
+      left:16px;
+      transform:translateY(-50%);
+      background: rgba(255,255,255,0.92);
+      padding:0 6px;
+      color:#7b8794;
+      font-size:1rem;
+      pointer-events:none;
+      transition:0.22s;
+    }
+    .form-group input:focus + label,
+    .form-group select:focus + label,
+    .form-group textarea:focus + label,
+    .form-group input:not(:placeholder-shown) + label,
+    .form-group select:not(:placeholder-shown) + label,
+    .form-group textarea:not(:placeholder-shown) + label {
+      top:-10px;
+      left:12px;
+      font-size:0.82rem;
+      color:#ff7f50;
+      font-weight:600;
+    }
+
+    textarea {min-height:120px; resize:vertical}
+
+    /* small helper text */
+    .small{font-size:0.88rem;color:#6b7280;margin-top:6px}
+
+    /* Submit Button */
+    .actions{margin-top:14px}
+    button {
+      width:100%;
+      padding:14px 0;
+      border:none;
+      border-radius:30px;
+      background: linear-gradient(45deg, #ff7f50, #ff6347);
+      color:white;
+      font-size:1.05rem;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.3s;
+      box-shadow:0 8px 26px rgba(0,0,0,0.12);
+    }
+    button:hover{transform:translateY(-3px);}
+
+    footer {background:#2c3e50;color:white;text-align:center;padding:18px 0;margin-top:30px;font-size:0.95rem}
+
+    /* ===== Responsive ===== */
+    @media(max-width:960px){
+      .form-card{padding:28px 22px}
+      .form-grid{grid-template-columns:1fr}
+      .logo-title img{height:60px}
+      header h1{font-size:1.2rem}
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo-title">
+      <img src="images/logo.jpg" alt="Coaching Logo" class="logo">
+      <h1>Talent Hunt Software Solutions</h1>
+      <img src="images/sir-photo.jpg" alt="Sir Photo" class="sir-photo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="placements.html">Placements</a></li>
+        <li><a href="admission.html" class="active">Admission</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="form-card">
+  <h2>Admission Enquiry — BCA (Sem 1 - 6)</h2>
+
+  <form id="admissionForm" class="admissionForm" enctype="multipart/form-data" method="post" action="submit.php">
+
+    <div class="form-grid">
+
+      <!-- Personal Details -->
+      <div class="full"><strong>1. Personal Details</strong></div>
+
+      <div class="form-group">
+        <input type="text" name="fullName" id="fullName" placeholder=" " required>
+        <label for="fullName">Full Name *</label>
+      </div>
+
+      <div class="form-group">
+        <input type="date" name="dob" id="dob" placeholder=" " required>
+        <label for="dob">Date of Birth *</label>
+      </div>
+
+      <div class="form-group">
+        <select name="gender" id="gender" required>
+          <option value="" hidden>Select Gender *</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+        <label for="gender">Gender *</label>
+      </div>
+	  
+	  <div class="form-group">
+        <select name="category" id="category" required>
+          <option value="" hidden>Select Category *</option>
+          <option value="General">General</option>
+          <option value="OBC">OBC</option>
+          <option value="SC">SC</option>
+		  <option value="ST">ST</option>
+        </select>
+        <label for="Category">Category *</label>
+      </div>
+
+     <!-- <div class="form-group">
+        <input type="text" name="category" id="category" placeholder=" " >
+        <label for="category">Category (Gen/OBC/SC/ST)</label>
+      </div> -->
+
+      <div class="form-group">
+        <input type="text" name="fatherName" id="fatherName" placeholder=" " >
+        <label for="fatherName">Father's Name</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="motherName" id="motherName" placeholder=" " >
+        <label for="motherName">Mother's Name</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="aadhar" id="aadhar" placeholder=" " inputmode="numeric" pattern="\d{12}">
+        <label for="aadhar">Aadhar Number</label>
+      </div>
+
+      <div class="form-group">
+        <input type="tel" name="mobile" id="mobile" placeholder=" " required>
+        <label for="mobile">Mobile Number *</label>
+      </div>
+
+      <div class="form-group full">
+        <input type="email" name="email" id="email" placeholder=" ">
+        <label for="email">Email</label>
+      </div>
+
+      <div class="form-group full">
+        <textarea name="permAddress" id="permAddress" placeholder=" "></textarea>
+        <label for="permAddress">Permanent Address</label>
+      </div>
+
+      <!-- Academic Details -->
+      <div class="full" style="margin-top:8px"><strong>2. Academic Details</strong></div>
+
+      <div class="form-group">
+        <input type="text" name="tenthSchool" id="tenthSchool" placeholder=" ">
+        <label for="tenthSchool">10th - School / Board</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="tenthYear" id="tenthYear" placeholder=" ">
+        <label for="tenthYear">Passing Year (10th)</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="tenthPerc" id="tenthPerc" placeholder=" ">
+        <label for="tenthPerc">10th Percentage / CGPA</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="twelfthSchool" id="twelfthSchool" placeholder=" ">
+        <label for="twelfthSchool">12th - School / Board</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="twelfthYear" id="twelfthYear" placeholder=" ">
+        <label for="twelfthYear">Passing Year (12th)</label>
+      </div>
+	  
+	  <div class="form-group">
+        <select name="stream" id="stream" required>
+          <option value="" hidden>Select Stream *</option>
+          <option value="Science">Science</option>
+          <option value="Arts">Arts</option>
+          <option value="Commerce">Commerce</option>
+        </select>
+        <label for="stream">Stream *</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="twelfthPerc" id="twelfthPerc" placeholder=" ">
+        <label for="twelfthPerc">12th Percentage / Stream</label>
+      </div>
+
+      <!-- Course Details -->
+      <div class="full" style="margin-top:8px"><strong>3. Course Details (BCA)</strong></div>
+
+      <div class="form-group">
+        <input type="text" value="BCA" readonly placeholder=" ">
+        <label>Course</label>
+      </div>
+
+      <div class="form-group">
+        <select name="semester" id="semester" required>
+          <option value="" hidden>Select Semester *</option>
+          <option>Sem 1</option>
+          <option>Sem 2</option>
+          <option>Sem 3</option>
+          <option>Sem 4</option>
+          <option>Sem 5</option>
+          <option>Sem 6</option>
+        </select>
+        <label for="semester">Semester *</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="session" id="session" placeholder=" ">
+        <label for="session">Session (e.g. 2025-26)</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="college" id="college" placeholder=" ">
+        <label for="college">College / University (if any)</label>
+      </div>
+
+      <!-- Documents -->
+      <div class="full" style="margin-top:8px"><strong>4. Document Uploads</strong></div>
+
+      <div class="form-group">
+        <input type="file" name="photo" id="photo" accept="image/*">
+        <label for="photo">Passport Size Photo</label>
+      </div>
+
+      <div class="form-group">
+        <input type="file" name="signature" id="signature" accept="image/*">
+        <label for="signature">Signature (scan)</label>
+      </div>
+
+      <div class="form-group">
+        <input type="file" name="marks10" id="marks10" accept="application/pdf,image/*">
+        <label for="marks10">10th Marksheet (scan)</label>
+      </div>
+
+      <div class="form-group">
+        <input type="file" name="marks12" id="marks12" accept="application/pdf,image/*">
+        <label for="marks12">12th Marksheet (scan)</label>
+      </div>
+
+      <!-- Declaration -->
+      <div class="full" style="margin-top:8px"><strong>7. Declaration</strong></div>
+
+      <div class="form-group full">
+        <textarea readonly>मैं घोषणा करता/करती हूँ कि ऊपर दी गई जानकारी सही और पूर्ण है। I hereby declare that the information provided above is true and correct to the best of my knowledge.</textarea>
+        <label>Student Declaration (read-only)</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="studentSign" id="studentSign" placeholder=" ">
+        <label for="studentSign">Student Signature (Type name)</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="parentSign" id="parentSign" placeholder=" ">
+        <label for="parentSign">Parent Signature (Type name)</label>
+      </div>
+
+    </div> <!-- end grid -->
+
+    <div class="actions full">
+      <button type="submit">Submit Admission Form</button>
+    </div>
+
+  </form>
+</div>
+
+<footer>
+  &copy; 2025 Talent Hunt Software Solutions. All Rights Reserved.
+</footer>
+
+<!--<script>
+  // Form submission (same demo behaviour)
+  document.getElementById('admissionForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    // Basic validation
+    const name = document.getElementById('fullName').value.trim();
+    const semester = document.getElementById('semester').value;
+    const mobile = document.getElementById('mobile').value.trim();
+    if(!name){ alert('Please enter full name.'); return; }
+    if(!semester){ alert('Please select semester.'); return; }
+    if(!mobile){ alert('Please enter mobile number.'); return; }
+
+    // Build preview of key fields and uploaded filenames
+    const fd = new FormData(this);
+    const preview = [];
+    preview.push('Name: '+fd.get('fullName'));
+    preview.push('DOB: '+fd.get('dob'));
+    preview.push('Semester: '+fd.get('semester'));
+    preview.push('Mobile: '+fd.get('mobile'));
+    ['photo','signature','marks10','marks12'].forEach(k=>{
+      const f = fd.get(k);
+      if(f && f.name) preview.push(k+': '+f.name);
+    });
+
+    if(confirm('Form looks valid. Submit?
+
+Preview:
+'+preview.join('
+'))){
+      alert('✅ Form submitted (demo). Integrate with backend to save.');
+      this.reset();
+      // clear previews
+      document.querySelectorAll('.file-preview').forEach(n=>n.innerHTML='');
+    }
+  });
+
+  // ===== Enhanced File Preview + Size Limit + PDF Icon =====
+  (function(){
+    const MAX_BYTES = 2 * 1024 * 1024; // 2 MB
+    const fileIds = ['photo','signature','marks10','marks12'];
+
+    fileIds.forEach(id => {
+      const input = document.getElementById(id);
+      if(!input) return;
+
+      // create preview container
+      const previewBox = document.createElement('div');
+      previewBox.className = 'file-preview';
+      previewBox.style.fontSize = '0.9rem';
+      previewBox.style.color = '#333';
+      previewBox.style.marginTop = '8px';
+      input.parentNode.appendChild(previewBox);
+
+      // create error message node
+      const err = document.createElement('div');
+      err.className = 'file-error';
+      err.style.color = '#b91c1c';
+      err.style.fontSize = '0.85rem';
+      err.style.marginTop = '6px';
+      input.parentNode.appendChild(err);
+
+      // helper to render file
+      function renderFile(file){
+        previewBox.innerHTML = '';
+        err.textContent = '';
+        if(!file) return;
+        if(file.size > MAX_BYTES){
+          err.textContent = 'Error: File too large. Max 2 MB allowed.';
+          input.value = '';
+          return;
+        }
+
+        const nameEl = document.createElement('div');
+        nameEl.innerHTML = '<strong>Selected:</strong> ' + file.name;
+        previewBox.appendChild(nameEl);
+
+        if(file.type.startsWith('image/')){
+          const img = document.createElement('img');
+          img.src = URL.createObjectURL(file);
+          img.style.width = '110px';
+          img.style.height = '110px';
+          img.style.objectFit = 'cover';
+          img.style.borderRadius = '8px';
+          img.style.display = 'block';
+          img.style.marginTop = '8px';
+          previewBox.appendChild(img);
+
+          // revoke object URL after image loads
+          img.onload = () => { URL.revokeObjectURL(img.src); }
+        } else if(file.type === 'application/pdf'){
+          // PDF icon + link to open
+          const pdfWrap = document.createElement('div');
+          pdfWrap.style.display = 'flex';
+          pdfWrap.style.alignItems = 'center';
+          pdfWrap.style.gap = '10px';
+          pdfWrap.style.marginTop = '8px';
+
+          const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+          svg.setAttribute('width','48'); svg.setAttribute('height','48'); svg.setAttribute('viewBox','0 0 24 24');
+          svg.innerHTML = '<path fill="#e34f4f" d="M6 2h7l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path><path fill="#fff" d="M13 3.5V9h5"></path>';
+          pdfWrap.appendChild(svg);
+
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(file);
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.textContent = 'Open PDF';
+          link.style.color = '#0b3d91';
+          link.style.fontWeight = '600';
+
+          pdfWrap.appendChild(link);
+          previewBox.appendChild(pdfWrap);
+
+          // revoke URL when user leaves page (best-effort)
+          window.addEventListener('unload', ()=>{ URL.revokeObjectURL(link.href); });
+        } else {
+          const other = document.createElement('div');
+          other.style.marginTop = '8px';
+          other.textContent = 'File ready: ' + file.name;
+          previewBox.appendChild(other);
+        }
+      }
+
+      // handle change via picker
+      input.addEventListener('change', ()=>{
+        const file = input.files[0];
+        renderFile(file);
+      });
+
+      // Optional: add simple drag & drop on parent node
+      const parent = input.parentNode;
+      parent.addEventListener('dragover', (ev)=>{ ev.preventDefault(); parent.style.background = 'rgba(52,102,242,0.03)'; });
+      parent.addEventListener('dragleave', ()=>{ parent.style.background = 'transparent'; });
+      parent.addEventListener('drop', (ev)=>{
+        ev.preventDefault(); parent.style.background = 'transparent';
+        const f = ev.dataTransfer.files && ev.dataTransfer.files[0];
+        if(f){
+          // attach to input (works in modern browsers)
+          const dataTransfer = new DataTransfer();
+          dataTransfer.items.add(f);
+          input.files = dataTransfer.files;
+          renderFile(f);
+        }
+      });
+
+    });
+  })();
+</script> -->
+
+</body>
+</html>

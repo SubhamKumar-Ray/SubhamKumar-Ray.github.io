@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Talent Hunt Software Solutions</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      font-family:'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+      color:#333;
+      line-height:1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* ===== Header ===== */
+    header {
+      background:linear-gradient(#FF8C00);
+      color:white;
+      padding:15px 0;
+      box-shadow:0 2px 10px rgba(0,0,0,0.3);
+      position:sticky;
+      top:0;
+      z-index:1000;
+      transition:0.3s;
+    }
+    header:hover {background: linear-gradient(#FF8C00);
+	}
+    header .container {
+      width:90%;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .logo-title {
+      display:flex;
+      align-items:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .logo-title img {
+      height:80px;
+      width:auto;
+      border-radius:10px;
+      object-fit:cover;
+      border:2px solid #ff7f50;
+    }
+
+    .logo-title .sir-photo {
+      height:70px;
+      width:70px;
+      border-radius:50%;
+      object-fit:cover;
+      border:2px solid white;
+    }
+    header h1 {
+      font-size:1.8rem;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+    header img.sir-photo {
+      height:70px;
+      width:70px;
+      border-radius:50%;
+      object-fit:cover;
+      border:2px solid #ff7f50;
+    }
+    nav ul {
+      list-style:none;
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:10px;
+    }
+    nav ul li a {
+      text-decoration:none;
+      color:white;
+      font-size:1rem;
+      padding:8px 14px;
+      border-radius:5px;
+      transition:0.3s;
+      position:relative;
+    }
+    nav ul li a.active, nav ul li a:hover {
+      background:#ff7f50;
+      transform:translateY(-2px);
+      box-shadow:0 3px 8px rgba(0,0,0,0.3);
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+      background: linear-gradient(135deg, #1c92d2, #f2fcfe);
+      color:white;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:100px 20px;
+    }
+    .hero h2 {
+      font-size:2.8rem;
+      margin-bottom:15px;
+      text-shadow:0 4px 8px rgba(0,0,0,0.4);
+    }
+    .hero p {
+      font-size:1.3rem;
+      margin-bottom:25px;
+      max-width:700px;
+      opacity:0.9;
+    }
+    .btn-primary {
+      background:#ff7f50;
+      color:white;
+      padding:14px 35px;
+      border-radius:30px;
+      text-decoration:none;
+      font-size:1.1rem;
+      transition:0.4s;
+      box-shadow:0 4px 12px rgba(0,0,0,0.3);
+    }
+    .btn-primary:hover {
+      background:#ff6347;
+      transform:translateY(-3px);
+      box-shadow:0 6px 18px rgba(0,0,0,0.4);
+    }
+
+    /* ===== About Section ===== */
+    .about {
+      padding:60px 20px;
+      text-align:center;
+    }
+    .about h2 {font-size:2.4rem; color:#2c3e50; margin-bottom:20px;}
+    .about p {max-width:850px; margin:auto; font-size:1.1rem; color:#555; line-height:1.7;}
+
+    /* ===== Feature Cards ===== */
+    .features {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:30px;
+      margin-top:40px;
+    }
+    .feature-card {
+      flex:1 1 250px;
+      background: linear-gradient(145deg,#fff7f7,#f0f7ff);
+      border-radius:12px;
+      padding:25px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-card:hover {
+      transform:translateY(-7px);
+      box-shadow:0 12px 25px rgba(0,0,0,0.2);
+    }
+    .feature-card h3 {color:#ff7f50; margin-bottom:10px;}
+    .feature-card p {color:#555;}
+
+    /* ===== Team Section ===== */
+    .team-section {
+      padding:60px 20px;
+      text-align:center;
+    }
+    .team-section h2 {color:#2c3e50; margin-bottom:30px;}
+    .team {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:30px;
+    }
+    .member {
+      background: linear-gradient(145deg,#fff7f7,#f0f7ff);
+      border-radius:12px;
+      width:250px;
+      padding:20px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .member:hover {
+      transform:translateY(-7px);
+      box-shadow:0 12px 25px rgba(0,0,0,0.2);
+    }
+    .member-photo {
+      width:150px;
+      height:150px;
+      margin:auto;
+      border-radius:50%;
+      border:3px solid #ff7f50;
+      overflow:hidden;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    }
+    .member-photo img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition: transform 0.3s;
+    }
+    .member-photo img:hover {transform:scale(1.05);}
+    .member h4 {margin:15px 0 5px; color:#ff7f50;}
+    .member p {font-size:0.95rem; color:#555; text-align:justify;}
+
+    /* ===== Footer ===== */
+    footer {
+      background:#0f3d64;
+      color:white;
+      text-align:center;
+      padding:20px 0;
+      margin-top:50px;
+      font-size:0.95rem;
+    }
+
+    @media(max-width:768px){
+      nav ul li {display:block; margin:10px 0;}
+      .features, .team {flex-direction:column; align-items:center;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo-title">
+      <img src="images/logo.jpg" alt="Coaching Logo" class="logo">
+      <h1>Talent Hunt Software Solutions</h1>
+      <img src="images/sir-photo.jpg" alt="Sir Photo" class="sir-photo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="placements.html">Placements</a></li>
+        <li><a href="admission.html">Admission</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h2>About Talent Hunt Software Solutions</h2>
+  <p>Empowering students with real-world IT skills, hands-on projects, and expert mentorship to launch successful careers in technology.</p>
+  <a href="admission.html" class="btn-primary">Join Now</a>
+</section>
+
+<section class="about">
+  <div class="container">
+    <h2>Who We Are</h2>
+    <p>
+      Talent Hunt Software Solutions is a premier IT training institute focused on empowering students from 2014 with real-world programming and software development skills.
+      We bridge the gap between academic learning and industry expectations through hands-on learning, expert mentorship, and live project experience.
+    </p>
+
+    <div class="features">
+      <div class="feature-card">
+        <h3>Our Mission</h3>
+        <p>To provide high-quality, practical IT education that builds strong technical and professional skills.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Our Vision</h3>
+        <p>To create future-ready professionals who can innovate, lead, and make an impact in the tech world.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Our Values</h3>
+        <p>Integrity, excellence, innovation, and continuous learning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="team-section">
+  <div class="container">
+    <h2>Meet Our Team</h2>
+    <div class="team">
+      <div class="member">
+        <div class="member-photo">
+          <img src="images/sir-photo.jpg" alt="Randhir Sir">
+        </div>
+        <h4>Randhir Sir</h4>
+        <p>
+          Founder & Lead Trainer — Expert in Web Development, App Development, Data Science, and all major programming languages.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Talent Hunt Software Solutions. All Rights Reserved.
+</footer>
+
+</body>
+</html>
